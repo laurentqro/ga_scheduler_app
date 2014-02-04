@@ -12,6 +12,13 @@
   <% end %>
 
   <div class="field">
+    <% Role.all.each do |role| %>
+      <%= check_box_tag "user[role_ids][]", role.id %>
+      <%= role.name %><br />
+    <% end %>
+  </div>
+
+  <div class="field">
     <%= f.label :first_name %><br />
     <%= f.text_field :first_name %>
   </div>

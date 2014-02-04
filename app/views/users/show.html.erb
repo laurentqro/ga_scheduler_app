@@ -15,6 +15,13 @@
   <%= @user.email %>
 </p>
 
+<p>
+  <b>Role(s):</b>
+  <% @user.roles.each do |role| %>
+  <%= role.name %>
+  <% end %>
+</p>
+
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
