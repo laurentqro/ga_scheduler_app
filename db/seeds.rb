@@ -32,12 +32,24 @@ users.each do |user|
   User.create first_name: user[:first_name], last_name: user[:last_name], email: user[:email]
 end
 
+Role.destroy_all
+
 roles = ["admin", "instructor", "student"]
 
 roles.each do |role|
   r = Role.new
   r.name = role
   r.save
+end
+
+TimeSlot.destroy_all
+
+time_slots = ["day", "evening"]
+
+time_slots.each do |time_slot|
+  t = TimeSlot.new
+  t.name = time_slot
+  t.save
 end
 
 Course.destroy_all

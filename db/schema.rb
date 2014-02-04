@@ -50,8 +50,7 @@ ActiveRecord::Schema.define(:version => 20140204161409) do
   end
 
   create_table "time_slots", :force => true do |t|
-    t.boolean  "day"
-    t.boolean  "evening"
+    t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
