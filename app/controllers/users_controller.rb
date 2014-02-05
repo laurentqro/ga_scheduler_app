@@ -2,7 +2,12 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
+
+    if params[:role].present?
+      @users = User.with_role_of(params[:role])
+    else
+      @users = User.all
+    end
 
     respond_to do |format|
       format.html # index.html.erb

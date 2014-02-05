@@ -5,6 +5,8 @@ GaSchedulerApp::Application.routes.draw do
   resources :users
   resources :time_slots
 
+  get 'users/:role', to: 'users#index'
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
