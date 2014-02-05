@@ -5,8 +5,10 @@ class UsersController < ApplicationController
 
     if params[:role].present?
       @users = User.with_role_of(params[:role])
+      @role = params[:role].capitalize + "s"
     else
       @users = User.all
+      @role = "All users"
     end
 
     respond_to do |format|
