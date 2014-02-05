@@ -13,7 +13,7 @@
 <h2>Instructors</h2>
 
 <% @course.users.each do |user| %>
-<li><%= user.first_name %></li>
+<li><%= user.to_s %></li>
 <% end %>
 
 <hr>

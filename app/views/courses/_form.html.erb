@@ -23,17 +23,17 @@
 
   <div class="field">
     <h3>Instructors</h3>
-    <% User.with_role_of("instructor").each do |user| %>
+    <% @instructors.each do |user| %>
       <%= check_box_tag "course[user_ids][]", user.id, @course.user_ids.include?(user.id) %>
-      <%= user.first_name %><br />
+      <%= user.to_s %><br />
     <% end %>
   </div>
 
   <div class="field">
     <h3>Students</h3>
-    <% User.with_role_of("student").each do |user| %>
+    <% @students.each do |user| %>
       <%= check_box_tag "course[user_ids][]", user.id, @course.user_ids.include?(user.id) %>
-      <%= user.first_name %><br />
+      <%= user.to_s %><br />
     <% end %>
   </div>
 

@@ -25,6 +25,8 @@ class CoursesController < ApplicationController
   # GET /courses/new.json
   def new
     @course = Course.new
+    @students = User.with_role_of("student")
+    @instructors = User.with_role_of("instructor")
 
     respond_to do |format|
       format.html # new.html.erb
@@ -35,6 +37,8 @@ class CoursesController < ApplicationController
   # GET /courses/1/edit
   def edit
     @course = Course.find(params[:id])
+    @students = User.with_role_of("student")
+    @instructors = User.with_role_of("instructor")
   end
 
   # POST /courses
