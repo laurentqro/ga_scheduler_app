@@ -11,26 +11,30 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
+    <h3>First name</h3>
+    <%= f.text_field :first_name %>
+  </div>
+
+  <div class="form-group">
+    <h3>Last name</h3>
+    <%= f.text_field :last_name %>
+  </div>
+
+  <div class="form-group">
+    <h3>Email</h3>
+    <%= f.text_field :email %>
+  </div>
+
+  <div class="form-group">
+    <h3>Roles</h3>
     <% Role.all.each do |role| %>
       <%= check_box_tag "user[role_ids][]", role.id, @user.role_ids.include?(role.id) %>
       <%= role.name %><br />
     <% end %>
   </div>
 
-  <div class="field">
-    <%= f.label :first_name %><br />
-    <%= f.text_field :first_name %>
-  </div>
-  <div class="field">
-    <%= f.label :last_name %><br />
-    <%= f.text_field :last_name %>
-  </div>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.text_field :email %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <br>
+  <%= f.submit "Submit", class: "btn btn-primary" %>
+
 <% end %>
