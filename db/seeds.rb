@@ -1,11 +1,3 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
-
 User.destroy_all
 
 users = [
@@ -44,7 +36,7 @@ end
 
 TimeSlot.destroy_all
 
-time_slots = ["day", "evening"]
+time_slots = ["9am to 12pm", "2pm to 5pm" ,"6pm to 9pm"]
 
 time_slots.each do |time_slot|
   t = TimeSlot.new
@@ -55,10 +47,13 @@ end
 Course.destroy_all
 
 courses = [
-{ name: "Web Development Immersive", description: "Build a work-ready skill set and fluency in full stack web development, develop a portfolio of projects individually and in small teams that are ready to present to employers, prepare for an internship or entry-level job as a jr. web developer."},
+{ name: "Web Development Immersive", description: "Build a work-ready skill set and fluency in full stack web development, develop a portfolio of projects individually and in small teams that are ready to present to employers, prepare for an internship or entry-level job as a junior web developer."},
 { name: "Front End Web Development", description: "Design and code beautiful, interactive client-facing websites, program websites in HTML, CSS and JavaScript and master the technical vocabulary to communicate your ideas to your teammates and other stakeholders"},
 { name: "Social Strategy for Brands", description: "Learn key techniques for identifying unique cultural opportunities to connect with consumers and their culture. Learn how some of the best brands achieve the social pull they have through case studies."},
-{ name: "Getting Started With Github", description: "From the fundamentals of version control to publishing your first project, you’ll learn everything you need to know about GitHub and how it works in this class."}
+{ name: "Getting Started With Github", description: "From the fundamentals of version control to publishing your first project, you’ll learn everything you need to know about GitHub and how it works in this class."},
+{ name: "Data Science", description: "Applying your math and programming skills to make meaning out of large data sets. Learning how to analyze and manipulate data with Python. Learning how to make predictions about data using fundamental modeling techniques that will help you make better informed business decisions."},
+{ name: "Product Management", description: "Understand your users and analyze the market to build a product that is both desirable and viable. Create a product roadmap. Create a roadmap and effectively manage communication with all stakeholders. Develop metrics to measure success. Develop metrics to measure your success and make tough decisions."},
+{ name: "User Experience Design Immersive", description: "Apply fundamental UX skills to several hands-on projects in order to build up your design portfolio. Create a UX portfolio. Learn from and connect with some of the top UX practitioners in the field, from guest speakers to your instructional team. Work with stakeholders on design concepts. Prepare for an internship or entry-level job as a junior user experience designer"}
 ]
 
 courses.each do |course|
