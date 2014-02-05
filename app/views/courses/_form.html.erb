@@ -15,15 +15,44 @@
     <%= f.label :name %><br />
     <%= f.text_field :name %>
   </div>
+
   <div class="field">
     <%= f.label :description %><br />
     <%= f.text_area :description %>
   </div>
+
   <div class="field">
-    <%= f.label :date %><br />
+    <h3>Instructors</h3>
+    <% User.with_role_of("instructor").each do |user| %>
+      <%= check_box_tag "course[user_ids][]", user.id, @course.user_ids.include?(user.id) %>
+      <%= user.first_name %><br />
+    <% end %>
+  </div>
+
+  <div class="field">
+    <h3>Students</h3>
+    <% User.with_role_of("student").each do |user| %>
+      <%= check_box_tag "course[user_ids][]", user.id, @course.user_ids.include?(user.id) %>
+      <%= user.first_name %><br />
+    <% end %>
+  </div>
+
+  <div class="field">
+    <h4>In which classroom will the course take place?</h4>
+    <%= collection_select(:course, :classroom_id, Classroom.all, :id, :name) %>
+  </div>
+
+  <div class="field">
+    <h4>On what day?</h4>
     <%= f.date_select :date %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+
+  <div class="field">
+    <h4>At which time slot?</h4>
+    <%= collection_select(:course, :time_slot_id, TimeSlot.all, :id, :name) %>
   </div>
+
+  <br>
+  <%= f.submit "Submit", class: "btn btn-primary" %>
+
 <% end %>

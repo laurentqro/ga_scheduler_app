@@ -1,25 +1,22 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Name:</b>
-  <%= @course.name %>
-</p>
+<div class="page-header">
+  <h1><%= @course.name %></h1>
+</div>
 
-<p>
-  <b>Description:</b>
-  <%= @course.description %>
-</p>
+<p><%= @course.date %> at <%= @course.time_slot.name %></p>
 
-<p>
-  <b>Date:</b>
-  <%= @course.date %>
-</p>
+<p class="lead"><%= @course.description %></p>
 
-<p>
-  <b>Time slot:</b>
-  <%= @course.time_slot_id %>
-</p>
+<p>Classroom : <%= @course.classroom.name %></p>
 
+<h2>Instructors</h2>
+
+<% @course.users.each do |user| %>
+<li><%= user.first_name %></li>
+<% end %>
+
+<hr>
 
 <%= link_to 'Edit', edit_course_path(@course) %> |
 <%= link_to 'Back', courses_path %>
