@@ -1,29 +1,15 @@
-<h1>Courses</h1>
+<div class="page-header">
+  <h1>Courses</h1>
+</div>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Description</th>
-    <th>Date</th>
-    <th>Time</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<p><%= link_to 'New Course', new_course_path, class: "btn btn-primary" %></p>
 
 <% @courses.each do |course| %>
-  <tr>
-    <td><%= course.name %></td>
-    <td><%= course.description %></td>
-    <td><%= course.date %></td>
-    <td><%= course.time_slot.name %></td>
-    <td><%= link_to 'Show', course %></td>
-    <td><%= link_to 'Edit', edit_course_path(course) %></td>
-    <td><%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
+  <h2><%= link_to course.name, course %></h2>
+  <p><%= course.description %></p>
+  <p><%= course.start_date %></p>
+  <p><%= course.end_date %></p>
+  <p><%= course.time_slot.name %></p>
+  <%= link_to 'Edit', edit_course_path(course) %>
+  <%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' } %>
 <% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Course', new_course_path %>
