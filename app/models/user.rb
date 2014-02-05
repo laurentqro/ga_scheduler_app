@@ -1,5 +1,10 @@
 class User < ActiveRecord::Base
-  attr_accessible :email, :first_name, :last_name, :role_ids
+  attr_accessible :email, :first_name, :last_name, :role_ids, :password, :password_confirmation
+  validates :email, presence: true, uniqueness: true
+  validates :password, presence: true
+
+  has_secure_password
+
   has_and_belongs_to_many :roles
   has_many :enrollments
 

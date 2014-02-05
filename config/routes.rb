@@ -1,4 +1,12 @@
 GaSchedulerApp::Application.routes.draw do
+
+
+  root to: 'courses#index'
+
+  get '/login', to: 'sessions#new', as: 'login'
+  delete '/logout', to: 'sessions#destroy', as: 'logout'
+
+  resources :sessions, only: [:create, :destroy]
   resources :classrooms
   resources :courses
   resources :enrollments
@@ -6,6 +14,7 @@ GaSchedulerApp::Application.routes.draw do
   resources :time_slots
 
   get 'users/:role', to: 'users#index'
+  get '/sign up', to: 'users#new'
 
 
   # The priority is based upon order of creation:
