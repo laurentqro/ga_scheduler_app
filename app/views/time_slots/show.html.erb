@@ -1,0 +1,7 @@
+<h1><%= @time_slot.name %> courses</h1>
+
+<% @time_slot.courses.each do |course| %>
+<h2><%= course.name %></h2>
+<p><%= course.description %></p>
+
+<% end %>
