@@ -1,5 +1,9 @@
 <div class="page-header">
-  <h1>New user</h1>
+  <% if can? :manage, User %>
+  <h1>Register a new user</h1>
+  <% else %>
+  <h1>Sign up</h1>
+  <% end %>
 </div>
 
 <%= render 'form' %>

@@ -6,10 +6,10 @@
 
 <table class="table">
   <tr>
-    <th>First name</th>
-    <th>Last name</th>
-    <th>Email</th>
-    <th>Roles</th>
+    <th><h4>First name</h4></th>
+    <th><h4>Last name</h4></th>
+    <th><h4>Email</h4></th>
+    <th><h4>Roles</h4></th>
     <th></th>
     <th></th>
   </tr>
@@ -24,8 +24,8 @@
       <%= role.name %>
       <% end %>
     </td>
-    <td><%= link_to 'Edit', edit_user_path(user) %></td>
-    <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Edit', edit_user_path(user), class: "btn btn-warning" %></td>
+    <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>
   </tr>
 <% end %>
 </table>
