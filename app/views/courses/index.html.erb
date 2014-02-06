@@ -27,12 +27,11 @@
 
   <div class="col-md-4">
     <% if course.only_one_day? %>
-      <p><%= course.start_date.strftime("%A %d %B %Y") %></p>
+      <p><%= course.start_date.strftime("%a, %e %b %Y") %></p>
     <% else %>
-      <p>Starts: <%= course.start_date.strftime("%A %d %B %Y") %></p>
-      <p>Ends: <%= course.end_date.strftime("%A %d %B %Y") %></p>
+      <p><%= course.start_and_end_dates %></p>
     <% end %>
-    <p><%#= course.time_slot.name %></p>
+    <p><%= course.time_slot.name %></p>
 
   </div>
 

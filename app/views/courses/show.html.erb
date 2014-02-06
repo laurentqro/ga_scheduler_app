@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <% if can? :edit, Course %>
   <%= link_to 'Edit', edit_course_path(@course), class: "btn btn-primary" %>
 <% end %>
@@ -9,13 +7,12 @@
 </div>
 
 <% if @course.only_one_day? %>
-  <p><%= @course.start_date.strftime("%A %d %B %Y") %></p>
+  <p><%= @course.start_date.strftime("%a, %e %b %Y") %></p>
 <% else %>
-  <p>Starts: <%= @course.start_date.strftime("%A %d %B %Y") %></p>
-  <p>Ends: <%= @course.end_date.strftime("%A %d %B %Y") %></p>
+  <p><%= @course.start_and_end_dates %></p>
 <% end %>
+  <p><%= @course.time_slot.name %></p>
 
-<p><%= @course.time_slot.name %></p>
 
 <% if can? :manage, Classroom %>
 <p>Classroom : <%= @course.classroom.name %></p>
@@ -25,6 +22,12 @@
 
 <h2>Instructors</h2>
 
-<% @course.users.each do |user| %>
-<li><%= user.to_s %></li>
+<% @instructors.each do |user| %>
+<li><%= link_to user.to_s, user %></li>
+<% end %>
+
+<h2>Students</h2>
+
+<% @students.each do |user| %>
+<li><%= link_to user.to_s, user %></li>
 <% end %>

@@ -28,8 +28,8 @@ ActiveRecord::Schema.define(:version => 20140206142107) do
     t.integer  "classroom_id"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
-    t.date     "start_date"
-    t.date     "end_date"
+    t.datetime "start_date"
+    t.datetime "end_date"
   end
 
   create_table "enrollments", :force => true do |t|
