@@ -24,8 +24,12 @@
       <%= role.name %>
       <% end %>
     </td>
+
+    <% if can? :manage, User %>
     <td><%= link_to 'Edit', edit_user_path(user), class: "btn btn-warning" %></td>
     <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>
+    <% end %>
+
   </tr>
 <% end %>
 </table>

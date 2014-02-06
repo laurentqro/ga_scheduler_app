@@ -26,8 +26,10 @@
 <li><%= link_to user.to_s, user %></li>
 <% end %>
 
-<h2>Students</h2>
+<% if can? :read, User %>
+  <h2>Students</h2>
 
-<% @students.each do |user| %>
-<li><%= link_to user.to_s, user %></li>
+  <% @students.each do |user| %>
+  <li><%= link_to user.to_s, user %></li>
+  <% end %>
 <% end %>

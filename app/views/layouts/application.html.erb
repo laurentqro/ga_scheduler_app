@@ -24,21 +24,26 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><%= link_to "Courses", courses_url %></li>
-        <% if can? :manage, [Classroom, User] %>
-        <li><%= link_to "Classrooms", classrooms_url %></li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Users <b class="caret"></b></a>
-          <ul class="dropdown-menu">
-            <li><%= link_to "All", users_url %></li>
-            <li><%= link_to "Students", users_url(role: "student") %></li>
-            <li><%= link_to "Instructors", users_url(role: "instructor") %></li>
-            <li><%= link_to "Admins", users_url(role: "admin") %></li>
-            <li class="divider"></li>
-            <li><%= link_to "Create user", new_user_url %></li>
-          </ul>
-        </li>
+        <li><%= link_to "Course Catalog", courses_url %></li>
+        <% if current_user %>
+          <li><%= link_to "My courses", mycourses_url %></li>
         <% end %>
+
+        <% if can? :manage, [Classroom, User] %>
+          <li><%= link_to "Classrooms", classrooms_url %></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Users <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><%= link_to "All", users_url %></li>
+              <li><%= link_to "Students", users_url(role: "student") %></li>
+              <li><%= link_to "Instructors", users_url(role: "instructor") %></li>
+              <li><%= link_to "Admins", users_url(role: "admin") %></li>
+              <li class="divider"></li>
+              <li><%= link_to "Create user", new_user_url %></li>
+            </ul>
+          </li>
+        <% end %>
+
       </ul>
       <!--<form class="navbar-form navbar-left" role="search">
         <div class="form-group">
@@ -53,6 +58,7 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= current_user.to_s %> <b class="caret"></b></a>
           <ul class="dropdown-menu">
             <li><%= link_to "Edit my profile", edit_user_path(current_user) %></li>
+            <li><%= link_to "View my courses", mycourses_url %></li>
             <li class="divider"></li>
             <li><%= link_to 'log out', logout_path(session), method: :delete %></li>
           </ul>

@@ -16,6 +16,8 @@ GaSchedulerApp::Application.routes.draw do
   get 'users/:role', to: 'users#index'
   get '/signup', to: 'users#new'
 
+  get '/mycourses', to: 'enrollments#index', as: 'mycourses'
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

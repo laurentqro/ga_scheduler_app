@@ -15,4 +15,6 @@
   <%= @user.profile %>
 </p>
 
-<%= link_to 'Edit', edit_user_path(@user), class: "btn btn-primary" %>
+<% if can? :manage, User %>
+  <%= link_to 'Edit', edit_user_path(@user), class: "btn btn-primary" %>
+<% end %>

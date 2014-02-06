@@ -1,25 +1,51 @@
-<h1>Enrollments</h1>
+<% if can? :manage, Enrollment %>
 
-<table class="table">
-  <tr>
-    <th>Course</th>
-    <th>Student</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+  <h1>Enrollments</h1>
 
-<% @enrollments.each do |enrollment| %>
-  <tr>
-    <td><%= enrollment.course_id %></td>
-    <td><%= enrollment.user_id %></td>
-    <td><%= link_to 'Show', enrollment %></td>
-    <td><%= link_to 'Edit', edit_enrollment_path(enrollment) %></td>
-    <td><%= link_to 'Destroy', enrollment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
+  <table class="table">
+    <tr>
+      <th>Course</th>
+      <th>Student</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
 
-<br />
+  <% @enrollments.each do |enrollment| %>
+    <tr>
+      <td><%= enrollment.course_id %></td>
+      <td><%= enrollment.user_id %></td>
+      <td><%= link_to 'Show', enrollment %></td>
+      <td><%= link_to 'Edit', edit_enrollment_path(enrollment) %></td>
+      <td><%= link_to 'Destroy', enrollment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+  </table>
+  <br />
+  <%= link_to 'New Enrollment', new_enrollment_path, class: "btn btn-primary" %>
 
-<%= link_to 'New Enrollment', new_enrollment_path, class: "btn btn-primary" %>
+<% else %>
+
+  <% if current_user %>
+
+    <h1>Your courses</h1>
+
+      <table class="table">
+        <tr>
+          <th>Course</th>
+          <th>Date</th>
+        </tr>
+
+        <% @current_user.courses.order("start_date").each do |course| %>
+        <tr>
+          <td><%= link_to course.name, course %></td>
+          <td><%= course.start_and_end_dates %></td>
+        </tr>
+        <% end %>
+
+    </table>
+
+  <% end %>
+
+ <% end %>
+
