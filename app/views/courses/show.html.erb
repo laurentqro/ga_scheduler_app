@@ -8,13 +8,20 @@
   <h1><%= @course.name %></h1>
 </div>
 
-<p><%= @course.start_date %></p>
-<p><%= @course.end_date %></p>
+<% if @course.only_one_day? %>
+  <p><%= @course.start_date.strftime("%A %d %B %Y") %></p>
+<% else %>
+  <p>Starts: <%= @course.start_date.strftime("%A %d %B %Y") %></p>
+  <p>Ends: <%= @course.end_date.strftime("%A %d %B %Y") %></p>
+<% end %>
+
 <p><%= @course.time_slot.name %></p>
 
-<p class="lead"><%= @course.description %></p>
-
+<% if can? :manage, Classroom %>
 <p>Classroom : <%= @course.classroom.name %></p>
+<% end %>
+
+<p class="lead"><%= @course.description %></p>
 
 <h2>Instructors</h2>
 
