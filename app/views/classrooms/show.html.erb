@@ -1,20 +1,12 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Name:</b>
-  <%= @classroom.name %>
-</p>
+<% if can? :manage, Classroom %>
 
-<p>
-  <b>Location:</b>
-  <%= @classroom.location %>
-</p>
+  <h3><%= @classroom.name %></h3>
 
-<p>
-  <b>Capacity:</b>
-  <%= @classroom.capacity %>
-</p>
+  <p>Location: <%= @classroom.location %></p>
+  <p>Capacity <%= @classroom.capacity %></p>
 
-
-<%= link_to 'Edit', edit_classroom_path(@classroom) %> |
-<%= link_to 'Back', classrooms_path %>
+  <%= link_to 'Edit', edit_classroom_path(@classroom) %> |
+  <%= link_to 'Back', classrooms_path %>
+<% end %>

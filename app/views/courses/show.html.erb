@@ -1,6 +1,8 @@
 <p id="notice"><%= notice %></p>
 
-<%= link_to 'Edit', edit_course_path(@course) %>
+<% if can? :edit, Course %>
+  <%= link_to 'Edit', edit_course_path(@course), class: "btn btn-primary" %>
+<% end %>
 
 <div class="page-header">
   <h1><%= @course.name %></h1>

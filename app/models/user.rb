@@ -16,4 +16,8 @@ class User < ActiveRecord::Base
     includes(:roles).where(roles: {name: "#{role_name}"}).order(:first_name)
   end
 
+  def is?(role)
+    self.roles.map(&:name).include?(role.to_s)
+  end
+
 end
