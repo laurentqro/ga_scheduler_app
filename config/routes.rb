@@ -14,7 +14,7 @@ GaSchedulerApp::Application.routes.draw do
   resources :time_slots
 
   get 'users/:role', to: 'users#index'
-  get '/sign up', to: 'users#new'
+  get '/signup', to: 'users#new'
 
 
   # The priority is based upon order of creation:
