@@ -1,4 +1,4 @@
 class TimeSlot < ActiveRecord::Base
-  attr_accessible :day, :evening
+  attr_accessible :name
   has_many :courses
 end
