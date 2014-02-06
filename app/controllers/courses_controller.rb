@@ -2,7 +2,11 @@ class CoursesController < ApplicationController
   # GET /courses
   # GET /courses.json
   def index
-    @courses = Course.all
+    if params[:q].present?
+      @courses = Course.where("name LIKE ? OR description LIKE ?", "%#{params[:q]}%", "%#{params[:q]}%")
+    else
+      @courses = Course.all
+    end
 
     respond_to do |format|
       format.html # index.html.erb
