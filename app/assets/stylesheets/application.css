@@ -8,6 +8,54 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
- *= require_self
  *= require_tree .
+ *= require_self
  */
+
+ .navbar-default {
+  background-color: #000;
+  border: #000;
+ }
+
+ .navbar-default .navbar-nav > li > a {
+    color: #fff;
+  }
+
+h1 {
+  color: #c10505;
+  padding: 20px 0;
+}
+
+h2 a {
+  color: #000;
+}
+
+.course_item {
+  margin-bottom: 40px;
+  border-bottom: 1px dotted #ccc;
+  padding-bottom: 25px;
+}
+
+.course_item .date {
+  color: #3f3f3f;
+  margin-top: 20px;
+  text-align: center;
+}
+
+p {
+  font-size: 18px;
+  margin: 20px 0;
+}
+
+footer {
+  height: 200px;
+  background-color: #000;
+  text-align: center;
+  color: #ccc;
+}
+
+footer p {
+  margin-top: 50px;
+  padding-top: 100px;
+}
+

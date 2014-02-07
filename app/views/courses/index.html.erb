@@ -1,5 +1,5 @@
 <div class="page-header">
-  <h1>Course Catalog</h1>
+  <h1>COURSE CATALOG</h1>
 
   <% if can? :create, Course %>
     <p><%= link_to 'New Course', new_course_path, class: "btn btn-primary" %></p>
@@ -9,7 +9,7 @@
 
 <% @courses.each do |course| %>
 
-<div class="row">
+<div class="row course_item">
   <div class="col-md-8">
     <header>
       <h2><%= link_to course.name, course %></h2>
@@ -17,21 +17,19 @@
 
     <p><%= course.description %></p>
 
-    <footer>
       <% if can? [:edit, :destroy], Course %>
         <%= link_to 'Edit', edit_course_path(course), class: "btn btn-warning" %>
         <%= link_to 'Delete', course, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
       <% end %>
-    </footer>
   </div>
 
   <div class="col-md-4">
     <% if course.only_one_day? %>
-      <p><%= course.start_date.strftime("%a, %e %b %Y") %></p>
+      <p class="date"><%= course.start_date.strftime("%a, %e %b %Y") %></p>
     <% else %>
-      <p><%= course.start_and_end_dates %></p>
+      <p class="date"><%= course.start_and_end_dates %></p>
     <% end %>
-    <p><%= course.time_slot.name %></p>
+    <p class="date"><%= course.time_slot.name %></p>
 
   </div>
 
